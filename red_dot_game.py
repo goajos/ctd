@@ -19,7 +19,7 @@ threshold = 10
 
 # global margings: to ensure the index fingers don't have to move off screen
 top_margin = left_margin = right_margin = 50
-bottom_margin = 100
+bottom_margin = 150
 
 """
 Process an image for hand detection, required by Mediapipe
