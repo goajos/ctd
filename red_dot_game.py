@@ -15,6 +15,7 @@ dot_update = [time.time(),time.time()]
 countdown = 3
 countdown_start = None
 game_started = False
+threshold = 10
 
 # global margings: to ensure the index fingers don't have to move off screen
 top_margin = left_margin = right_margin = 50
@@ -150,6 +151,7 @@ w: width of the image
 Global variables:
 scores: keeps track of the score of each index finger, i=0 represents the left and i=1 represents the right index finger
 dot_positions: the positions of each dot drawn on the screen, i=0 represents the left side and i=1 represents the right side of the screen
+threshold: determines how "easy" it is to catch the dot, a higher value makes it easier
 
 Return:
 Updated score
@@ -157,7 +159,8 @@ Updated score
 def update_score_if_dot_caught(i: int, x: int, y: int, w: int) -> int:
     global scores
     global dot_positions
-    if abs(w - x - dot_positions[i][0]) < 5 and abs(y-dot_positions[i][1]) < 5:
+    global threshold
+    if abs(w - x - dot_positions[i][0]) < threshold and abs(y-dot_positions[i][1]) < threshold:
         scores[i] += 1
         dot_positions[i] = (0,0)
     return scores[i]
@@ -239,7 +242,8 @@ def main() -> None:
                         play_game(i, xs, ys, w, h, img, cap)
                 draw_index(img, xs, ys)
                 draw_scores(img, w, h)
-            else:
+            # TODO: BUG FIX
+            elif game_started and len(xs) < 2:
                 cap.release()
                 raise Exception("A finger moved offscreen. Please restart a new game")
 
