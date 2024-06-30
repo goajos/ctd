@@ -1,4 +1,4 @@
-#Catch the Dot
+# Catch the Dot
 Author: Jasper Cremers
 
 ## Introduction
@@ -13,6 +13,4 @@ or
 ```
 python red_dot_game.py
 ```
-depending on your python installation.
-
-Enjoy the game!
+depending on your python installation. Enjoy the game!
