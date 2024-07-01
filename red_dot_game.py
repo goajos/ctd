@@ -242,7 +242,6 @@ def main() -> None:
                         play_game(i, xs, ys, w, h, img, cap)
                 draw_index(img, xs, ys)
                 draw_scores(img, w, h)
-            # TODO: BUG FIX
             elif game_started and len(xs) < 2:
                 cap.release()
                 raise Exception("A finger moved offscreen. Please restart a new game")
